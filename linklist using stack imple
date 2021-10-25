@@ -1,0 +1,60 @@
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+class MinStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.currTop = Node(9223372036854775807)
+        self.currMin = self.currTop.val
+        
+        
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: void
+        """
+
+        newNode = Node(x)
+        
+        if self.currTop == None:
+            self.currMin = newNode.val
+
+        if self.currTop != None:
+            self.currMin = min(self.currMin, newNode.val)
+        
+        newNode.next = self.currTop
+        self.currTop = newNode
+                
+    def pop(self):
+        """
+        :rtype: void
+        """
+        
+        if self.currTop.val == self.currMin:
+            tempTop = self.currTop.next
+            tempMin = 9223372036854775807
+            while tempTop.next != None:
+                tempMin = min(tempMin, tempTop.val)
+                tempTop = tempTop.next
+            self.currMin = tempMin
+            
+        self.currTop = self.currTop.next
+        
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        
+        return self.currTop.val
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        return self.currMin
