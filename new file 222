@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main()
+{
+    int j, start, end;
+
+    /* Input start and end limit from user */
+    printf("Enter starting value: ");
+    scanf("%d", &start);
+    printf("Enter end value: ");
+    scanf("%d", &end);
+
+    /** Run loop from 'start' to 'end' and decrement by 1 in each iteration     */ 
+    for(j=start; j>=end; j--)
+    {
+        printf("%d\n", j);
+    }
+
+    return 0;
+}
